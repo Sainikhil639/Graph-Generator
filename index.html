@@ -21,8 +21,8 @@
     </style>
 </head>
 
-<body style="height: 90vh;">
-    <div style="height: 90vh;">
+<body>
+    <div style="max-height: 100%;">
         <div style="text-align: center;">
             <button id="dynamicButton" onclick="showDynamicGraph()">Dynamic Graph</button>
             <!-- <button id="normalButton" onclick="showNormalGraph()">Normal Graph</button> -->
@@ -32,15 +32,16 @@
         <div id="dynamic" style="display: block;">
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <h1>Dynamic Graph </h1>
-            
-            <div>
-                <label for="initialValue">Enter initial y-axis value: </label>
-                <input type="number" id="initialValue" placeholder="Enter initial value">
-                <button onclick="initializeGraph()">Initialize Graph</button>
-            </div>
 
             <div>
-                <canvas style="padding: 30px; height: 60%; width: 60%;" id="mydynamicChart"></canvas>
+                <label for="initialValue" style="font-size: 24px;">Enter initial y-axis value: </label>
+                <input type="number" id="initialValue" style="padding: 10px;" placeholder="Enter initial value">
+                <button onclick="initializeGraph()">Initialize Graph</button>
+                <button id="downloadButton">Download</button>
+            </div>
+
+            <div style="height: 65%; width: 70%;" >
+                <canvas style="padding: 30px;" id="mydynamicChart"></canvas>
             </div>
         </div>
         <span style="text-align: left; font-size: 12px;">@Nikhil</span>
@@ -164,6 +165,17 @@
             // document.getElementById("dataInput").value = "";
             // createGraph();
         }
+
+        document.getElementById("downloadButton").addEventListener("click", function () {
+            const canvas = document.getElementById("mydynamicChart");
+            const image = canvas.toDataURL("image/jpeg");
+
+            const link = document.createElement("a");
+            link.href = image;
+            link.download = "graph.jpeg";
+            link.click();
+        });
+
     </script>
 </body>
 
