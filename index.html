@@ -132,7 +132,7 @@
             const initialValueInput = document.getElementById("initialValue");
             initialYValueDynamic = parseFloat(initialValueInput.value) || 0;
             dataPointsDynamic = [initialYValueDynamic];
-            mydynamicChart.data.labels = ["Initial Value"];
+            mydynamicChart.data.labels = ["0"];
             mydynamicChart.data.datasets[0].data = dataPointsDynamic;
             mydynamicChart.update();
         }
